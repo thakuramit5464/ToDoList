@@ -1,6 +1,6 @@
 {
-  "short_name": "Feed The Monster",
-  "name": "Feed The Monster Progressive Web App",
+  "short_name": "Todo List",
+  "name": "Todo List Progressive Web App",
   "icons": [
     {
       "src": "./assets/manifest-icon-192.maskable.png",

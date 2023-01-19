@@ -4,16 +4,17 @@
 import { StartScene } from "./src/Components/scenes/startScene.js";
 // import { CanvasStack } from "./src/utility/canvas-stack.js";
 // import { firebaseConfig } from "./src/firebase/firebase_config.js";
-import {
-  getDatafromStorage,
-  ProfileData,
-  setDataToStorage,
-} from "./src/data/profile-data.js";
-import { PWAInstallStatus } from "./src/common/common.js";
-import { Workbox } from "workbox-window";
-import { lang } from "./global-variables.js";
+// import {
+//   getDatafromStorage,
+//   ProfileData,
+//   setDataToStorage,
+// } from "./src/data/profile-data.js";
+// import { PWAInstallStatus } from "./src/common/common.js";
+// import { Workbox } from "workbox-window";
+// import { lang } from "./global-variables.js";
 // import { StartScene } from "./src/Components/sections/projectSection.js";
 import { Hello } from "./hello.js";
+import { LoginSignup } from "./src/Components/sections/login-signup.js";
 declare const window: any;
 declare const app: any;
 declare global {
@@ -72,7 +73,8 @@ window.addEventListener("load", async function () {
   //   // this.startScene = new StartScene(canvas, d, this.analytics);
   // });
   {
-    new StartScene(this.mainDiv);
+    this.scene= new StartScene(this.mainDiv);
+    // new LoginSignup(this.mainDiv);
     /* this.startScene = new StartScene(canvas, d, this.analytics); */
   }
 });

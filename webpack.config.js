@@ -33,6 +33,8 @@ var config = {
         { from: "./index.html", to: "./" },
         { from: "./index.css", to: "./" },
         { from: "./assets", to: "./assets" },
+        { from: "./manifest.json", to: "./" },
+        { from: "./sw.js", to: "./" },
       ],
     }),
   ],

@@ -1,34 +1,41 @@
 // import { auth, provider } from "./firebase.js";
 
 import { auth, provider } from "./firebase.js";
+import { ProjectSection } from "./projectSection.js";
 
 // import { analytics, auth, provider } from "./firebase.js";
 
 var self;
 export class LoginSignup {
-	public mainDiv: any;
-	public loginDiv: any;
-	public loginHeading: any;
-	public formDiv: any;
-	public form: any;
-	public userName: any;
-	public password: any;
-	public loginButton: any;
-	public signupButton: any;
-	public signupDiv: any;
-	public signupHeading: any;
-	public profileImage: any;
-	public fullName: any;
-	public emailAddress: any;
-	public newUserName: any;
-	public newPassword: any;
-	public newSignupButton: any;
+  public mainDiv: any;
+  public loginDiv: any;
+  public loginHeading: any;
+  public formDiv: any;
+  public form: any;
+  public userName: any;
+  public password: any;
+  public loginButton: any;
+  public signupButton: any;
+  public signupDiv: any;
+  public signupHeading: any;
+  public profileImage: any;
+  public fullName: any;
+  public emailAddress: any;
+  public newUserName: any;
+  public newPassword: any;
+  public newSignupButton: any;
 
   constructor(mainDiv) {
     self = this;
     this.mainDiv = mainDiv;
     // this.createLoginForm();
-    this.createSignupForm();
+    console.log(sessionStorage.getItem("IsThisFirstTime_Log_From_LiveServer"));
+    if (sessionStorage.getItem("IsThisFirstTime_Log_From_LiveServer")) {
+      this.createSignupForm();
+      sessionStorage.setItem("IsThisFirstTime_Log_From_LiveServer", "false");
+    } else {
+      this.createLoginForm();
+    }
   }
   createLoginForm() {
     this.loginDiv = document.createElement("div");
@@ -48,7 +55,7 @@ export class LoginSignup {
     // <input type="text" placeholder="&#xf007;  username" />
     this.userName = document.createElement("input");
     this.userName.type = "text";
-    this.userName.placeholder = "username";
+    this.userName.placeholder = "useremail";
     this.form.appendChild(this.userName);
     //     <input
     //     type="password"
@@ -62,7 +69,7 @@ export class LoginSignup {
     this.loginButton = document.createElement("button");
     this.loginButton.id = "loginButtonId";
     this.loginButton.onclick = function () {
-      console.log("loogin In");
+      self.login(self.userName.value, self.password.value);
       self.loginDiv.remove();
     };
     this.loginButton.innerText = "login";
@@ -130,8 +137,10 @@ export class LoginSignup {
       //   signInWithRedirect(auth, provider);
       //   console.log(auth);
       //   auth.signInWithPopup(provider);
-      self.createLoginForm();
+      // self.signInWithGoogle();
+
       self.createNewUser(self.emailAddress.value, self.newPassword.value);
+      self.createLoginForm();
     };
     this.form.appendChild(this.newSignupButton);
   }
@@ -140,6 +149,8 @@ export class LoginSignup {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(function (userCredential) {
+        console.log(userCredential);
+
         // Handle successful registration
         // userCredential.user will contain the user's information
       })
@@ -149,5 +160,17 @@ export class LoginSignup {
   }
   signInWithGoogle() {
     firebase.auth().signInWithPopup(provider);
+  }
+  login(userName, password) {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(userName, password)
+      .then(function () {
+        console.log("Successfully signed in sffdd!");
+        new ProjectSection(self.mainDiv);
+      })
+      .catch(function (error) {
+        console.log(error.message);
+      });
   }
 }

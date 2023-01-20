@@ -35,6 +35,7 @@ var config = {
         { from: "./assets", to: "./assets" },
         { from: "./manifest.json", to: "./" },
         { from: "./sw.js", to: "./" },
+        { from: "./firebase.js", to: "./" },
       ],
     }),
   ],

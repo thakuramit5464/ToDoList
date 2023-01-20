@@ -1,6 +1,6 @@
 // import { auth, provider } from "./firebase.js";
 
-import { auth, provider } from "./firebase.js";
+import { auth, provider } from "../../../firebase.js";
 import { ProjectSection } from "./projectSection.js";
 
 // import { analytics, auth, provider } from "./firebase.js";

@@ -13,6 +13,6 @@ export class StartScene {
   constructor(mainDiv) {
     console.log("<<<<<<<<<<<<<<<<<<<<<<<");
     this.mainDiv = mainDiv;
-    this.scene = new LoginSignup(mainDiv);
+    this.scene = new ProjectSection(mainDiv);
   }
 }

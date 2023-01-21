@@ -19,14 +19,21 @@ export class ViewProject {
     this.createProjectList();
   }
   createProjectList() {
+    var position;
     data = getDatafromStorage();
-    console.log(data.length);
-    var position = projectList.length * 12 + 10;
+    if (data) {
+      position = data.length * 12 + 10;
+    } else {
+      position = 40;
+    }
     this.projectListDiv = document.createElement("div");
     this.projectListDiv.id = "projectListDivId";
     this.projectListDiv.style.height = "" + position + "vh";
     this.mainDiv.appendChild(this.projectListDiv);
-    this.createList();
+    this.createCloseButton();
+    if (data) {
+      this.createList();
+    }
   }
   createList() {
     for (let i = 1; i <= data.length; i++) {

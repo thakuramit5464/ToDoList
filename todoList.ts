@@ -1,7 +1,6 @@
 // import { LevelSelectionScreen } from "./src/scenes/level-selection-scene.js";
 // import { getData } from "./src/data/api-data.js";
 // import { DataModal } from "./src/data/data-modal.js";
-import { StartScene } from "./src/Components/scenes/startScene.js";
 // import { CanvasStack } from "./src/utility/canvas-stack.js";
 // import { firebaseConfig } from "./src/firebase/firebase_config.js";
 // import {
@@ -14,7 +13,8 @@ import { StartScene } from "./src/Components/scenes/startScene.js";
 // import { lang } from "./global-variables.js";
 // import { StartScene } from "./src/Components/sections/projectSection.js";
 import { Hello } from "./hello.js";
-import { LoginSignup } from "./src/Components/sections/login-signup.js";
+import { StartScene } from "./src/scenes/startScene.js";
+// import { LoginSignup } from "./src/Components/sections/login-signup.js";
 declare const window: any;
 declare const app: any;
 declare global {
